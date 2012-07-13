@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ACPopoverContentDelegate.h"
 
 @interface WEPopoverContentViewController : UITableViewController {
 
 }
+
+@property (nonatomic, retain) NSObject<ACPopoverContentDelegate> *contentDelegate;
 
 @end

@@ -80,6 +80,7 @@
 		749FAE841286130000AB97F9 /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
 		749FAE851286130000AB97F9 /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WEPopover-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WEPopover-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		FAC5D7A315B07A1A0099F1A0 /* ACPopoverContentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPopoverContentDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FAC5D7A315B07A1A0099F1A0 /* ACPopoverContentDelegate.h */,
 				749FAE6F1286123500AB97F9 /* Popover */,
 				1D3623240D0F684500981E51 /* WEPopoverAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WEPopoverAppDelegate.m */,

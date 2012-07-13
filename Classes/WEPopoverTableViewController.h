@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WEPopoverController.h"
+#import "ACPopoverContentDelegate.h"
 
-@interface WEPopoverTableViewController : UITableViewController<WEPopoverControllerDelegate, UIPopoverControllerDelegate> {
+@interface WEPopoverTableViewController : UITableViewController<WEPopoverControllerDelegate, UIPopoverControllerDelegate, ACPopoverContentDelegate> {
 	WEPopoverController *popoverController;
 	NSInteger currentPopoverCellIndex;
 	Class popoverClass;

@@ -17,17 +17,6 @@
 #pragma mark -
 #pragma mark Initialization
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -43,27 +32,6 @@
 	
 	currentPopoverCellIndex = -1;
 }
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -110,46 +78,6 @@
     
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /**
  Thanks to Paul Solt for supplying these background images and container view properties
@@ -242,7 +170,9 @@
 	
 	if (!self.popoverController) {
 		
-		UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+		WEPopoverContentViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+        contentViewController.contentDelegate = self;
+        
 		self.popoverController = [[[popoverClass alloc] initWithContentViewController:contentViewController] autorelease];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
@@ -271,6 +201,15 @@
 	return YES;
 }
 
+#pragma mark -
+#pragma mark ACPopoverContentDelegate implementation
+
+- (void)userSelectedRowInPopover:(NSUInteger)row {
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        self.popoverController = nil;
+    }
+}
 
 #pragma mark -
 #pragma mark Memory management

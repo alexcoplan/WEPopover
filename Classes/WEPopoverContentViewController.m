@@ -10,7 +10,7 @@
 
 
 @implementation WEPopoverContentViewController
-
+@synthesize contentDelegate;
 
 #pragma mark -
 #pragma mark Initialization
@@ -34,34 +34,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 
 #pragma mark -
@@ -100,8 +72,9 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	
+    if ([self.contentDelegate respondsToSelector:@selector(userSelectedRowInPopover:)]) {
+        [self.contentDelegate userSelectedRowInPopover:[indexPath row]];
+    }
 }
 
 
@@ -116,8 +89,7 @@
 }
 
 - (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+    self.contentDelegate = nil;
 }
 
 
