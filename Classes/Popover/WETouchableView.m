@@ -32,7 +32,7 @@
 		UIView *hitView = [super hitTest:point withEvent:event];
 		
 		if (hitView == self) {
-			//Test whether any of the passthrough views would handle this touch
+			// test whether any of the passthrough views would handle this touch
 			testHits = YES;
 			UIView *superHitView = [self.superview hitTest:point withEvent:event];
 			testHits = NO;

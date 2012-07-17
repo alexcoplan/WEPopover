@@ -169,7 +169,6 @@
 - (IBAction)showPopover:(id)sender {
 	
 	if (!self.popoverController) {
-		
 		WEPopoverContentViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
         contentViewController.contentDelegate = self;
         
@@ -182,7 +181,8 @@
 													   animated:YES];
 		 
 		[contentViewController release];
-	} else {
+	} 
+    else {
 		[self.popoverController dismissPopoverAnimated:YES];
 		self.popoverController = nil;
 	}
